@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         maListViewPerso =findViewById(R.id.listviewperso);
 
-        ArrayList <HashMap <String, String> > listIem = new ArrayList<>();
+        final ArrayList <HashMap <String, String> > listIem = new ArrayList<>();
 
         HashMap <String , String> map;
 
@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT).show();
+HashMap<String, String> map= (HashMap<String, String>) maListViewPerso.getItemAtPosition(position);
+                Toast.makeText(MainActivity.this, map.get("titre"), Toast.LENGTH_SHORT).show();
             }
         });
 

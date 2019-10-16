@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
+import android.app.AlertDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,6 +65,23 @@ public class MainActivity extends AppCompatActivity {
 
 HashMap<String, String> map= (HashMap<String, String>) maListViewPerso.getItemAtPosition(position);
                 Toast.makeText(MainActivity.this, map.get("titre"), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+        maListViewPerso.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                HashMap<String,String> map=(HashMap<String,String>)  maListViewPerso.getItemAtPosition(position);
+
+                final AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Sélection item");
+                builder.setMessage("Votre choix:"+map.get("titre"));
+                builder.setPositiveButton("ok",null);
+                builder.show();
+                return true;
             }
         });
 
